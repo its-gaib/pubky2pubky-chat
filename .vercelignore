@@ -1,0 +1,10 @@
+.git/
+.env*
+.playwright-mcp/
+coverage/
+dist/
+node_modules/
+*.local
+npm-debug.log*
+src/test/
+**/*.test.*

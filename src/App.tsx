@@ -111,6 +111,10 @@ export default function App() {
     if (state.ownerId !== null) void navigator.clipboard.writeText(state.ownerId).catch(() => undefined)
   }
 
+  function openRingApproval() {
+    if (state.authorizationUrl !== null) window.location.href = state.authorizationUrl
+  }
+
   return (
     <div className="app-shell">
       <header className="topbar">
@@ -174,9 +178,13 @@ export default function App() {
               <p className="notice notice-warning mt-3" role="status">{state.connectionDetail}</p>
             )}
             {state.authorizationUrl !== null && (
-              <a className="button button-secondary mt-3 w-full" href={state.authorizationUrl}>
+              <button
+                className="button button-secondary mt-3 w-full"
+                onClick={openRingApproval}
+                type="button"
+              >
                 Open Ring approval
-              </a>
+              </button>
             )}
           </section>
 

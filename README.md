@@ -83,6 +83,7 @@ The oldest records are evicted first.
 
 ## Deployment boundary
 
-`vercel.json` permits network connections only to the app origin, the exact Pubky staging HTTP relay,
-and the exact HTTPS/WSS Iroh relay origin. It allows no framing, object/media access, camera,
-microphone, geolocation, payment, or USB permissions. Do not broaden `connect-src` with wildcards.
+`vercel.json` permits HTTPS fetches because PKARR can resolve a Pubky identity to an independently
+hosted HTTPS homeserver; the destination hostname is not knowable at build time. WebSocket access is
+limited to the configured Iroh relay, and scripts remain same-origin only. The policy allows no
+framing, object/media access, camera, microphone, geolocation, payment, or USB permissions.
