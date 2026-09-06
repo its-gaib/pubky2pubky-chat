@@ -1,6 +1,6 @@
 # pubky2pubky chat
 
-A standalone, browser-only chat surface for Pubky identities. It uses the shared `pubky2pubky` v4
+A standalone, browser-only chat surface for Pubky identities. It uses the shared `pubky2pubky` v1
 browser transport and keeps chat history in this browser instead of writing messages to a
 homeserver.
 
@@ -16,7 +16,7 @@ homeserver.
   record ID, owner, peer, direction, and timestamp.
 - A fail-closed adapter around `pubky2pubky/browser`. It restores one local identity or asks Pubky
   Ring for an exact `/pub/pubky2pubky/:rw` Grant, publishes the browser device, handles inbound
-  consent, and sends only after mutual v4 verification.
+  consent, and sends only after mutual v1 verification.
 - **Relayed · E2E encrypted** appears only after identity, locator, Iroh endpoint, and peer
   verification have all completed.
 
@@ -27,7 +27,7 @@ relay path because browsers cannot expose the UDP sockets required for native ho
 authenticated QUIC session still terminates in each browser. The relay can observe endpoint IDs,
 IP addresses, timing, traffic shape, and ciphertext, but not message plaintext.
 
-The initiator resolves the recipient’s public v4 device/relay records and encrypted Iroh QUIC reaches
+The initiator resolves the recipient’s public v1 device/relay records and encrypted Iroh QUIC reaches
 the recipient before manual acceptance. The recipient verifies the inbound signed Hello offline.
 Accepting then authorizes mutual live Pubky authority checks and application messaging; it is not a
 network-metadata-hiding consent boundary.

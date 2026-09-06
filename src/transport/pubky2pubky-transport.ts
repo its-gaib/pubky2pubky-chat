@@ -188,13 +188,13 @@ export class Pubky2PubkyTransportAdapter implements TransportAdapter {
       case 'peer-verified':
         this.requireIdentity()
         if (
-          event.protocolVersion !== 4 ||
+          event.protocolVersion !== 1 ||
           event.path !== 'relay' ||
           event.route !== 'relay' ||
           event.e2e !== true ||
           event.irohQuicEncrypted !== true ||
           event.pubkyIdentityVerified !== true ||
-          event.alpn !== 'pubky2pubky/iroh/v4'
+          event.alpn !== 'pubky2pubky/iroh/v1'
         ) {
           throw new TransportUnavailableError('The browser transport returned an invalid verified peer.')
         }

@@ -173,8 +173,8 @@ describe('real browser adapter boundary', () => {
       e2e: true,
       irohQuicEncrypted: true,
       pubkyIdentityVerified: true,
-      protocolVersion: 4,
-      alpn: 'pubky2pubky/iroh/v4',
+      protocolVersion: 1,
+      alpn: 'pubky2pubky/iroh/v1',
     })
     browser.emit({
       type: 'message',
@@ -194,8 +194,8 @@ describe('real browser adapter boundary', () => {
       e2e: false,
       irohQuicEncrypted: true,
       pubkyIdentityVerified: true,
-      protocolVersion: 4,
-      alpn: 'pubky2pubky/iroh/v4',
+      protocolVersion: 1,
+      alpn: 'pubky2pubky/iroh/v1',
     } as unknown as BrowserTransportEvent)
     expect(browser.disconnectCalls).toBeGreaterThan(0)
     expect(events.at(-1)).toMatchObject({ type: 'connection', phase: 'error' })
