@@ -25,6 +25,7 @@ import { Pubky2PubkyTransportAdapter } from './transport/pubky2pubky-transport'
 import { PeerConnectionBadge, RingConnectionBadge } from './components/connection-badge'
 import { InboundRequestCard } from './components/inbound-request-card'
 import { MessageComposer } from './components/message-composer'
+import { RingApproval } from './components/ring-approval'
 
 const database = new ChatDatabase()
 const history = new HistoryRepository(database)
@@ -111,10 +112,6 @@ export default function App() {
     if (state.ownerId !== null) void navigator.clipboard.writeText(state.ownerId).catch(() => undefined)
   }
 
-  function openRingApproval() {
-    if (state.authorizationUrl !== null) window.location.href = state.authorizationUrl
-  }
-
   return (
     <div className="app-shell">
       <header className="topbar">
@@ -177,15 +174,7 @@ export default function App() {
             {state.connectionDetail !== null && (
               <p className="notice notice-warning mt-3" role="status">{state.connectionDetail}</p>
             )}
-            {state.authorizationUrl !== null && (
-              <button
-                className="button button-secondary mt-3 w-full"
-                onClick={openRingApproval}
-                type="button"
-              >
-                Open Ring approval
-              </button>
-            )}
+            <RingApproval authorizationUrl={state.authorizationUrl} />
           </section>
 
           <section className="new-chat" aria-labelledby="new-chat-title">

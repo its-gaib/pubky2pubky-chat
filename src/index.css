@@ -147,6 +147,32 @@ input:disabled {
     rgb(255 255 255 / 1%);
 }
 
+.ring-approval {
+  margin-top: 16px;
+  border-top: 1px solid rgb(255 255 255 / 7%);
+  padding-top: 16px;
+}
+
+.ring-approval-qr {
+  width: 100%;
+  max-width: 240px;
+  margin: 16px auto;
+  background: #fff;
+}
+
+.ring-approval-qr svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ring-approval-feedback {
+  margin: 8px 0 0;
+  color: #a1a1aa;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
 .section-kicker {
   margin: 0;
   color: #71717a;

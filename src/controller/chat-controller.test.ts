@@ -78,6 +78,26 @@ afterEach(async () => {
 })
 
 describe('identity and delivery boundaries', () => {
+  it('clears the pending Ring approval URL when authorization fails', async () => {
+    vi.spyOn(transport, 'connectWithRing').mockImplementation(() => {
+      transport.emitCurrent({
+        type: 'authorization-required',
+        authorizationUrl: 'pubkyauth://signin_grant?secret=synthetic-test-request',
+      })
+      expect(controller.getSnapshot().authorizationUrl).not.toBeNull()
+      return Promise.reject(new Error('Synthetic Ring approval failure'))
+    })
+
+    await controller.connectWithRing()
+
+    expect(controller.getSnapshot()).toMatchObject({
+      authorizationUrl: null,
+      busy: false,
+      connection: 'error',
+      ownerId: null,
+    })
+  })
+
   it('clears identity state and ignores stale-session events on reconnect', async () => {
     await controller.connectWithRing()
     await controller.startConversation(PEER)

@@ -137,6 +137,7 @@ export class ChatController {
         busy: false,
         connection: this.transport.availability === 'unavailable' ? 'unavailable' : 'error',
         connectionDetail: safeErrorMessage(error),
+        authorizationUrl: null,
       })
     }
   }

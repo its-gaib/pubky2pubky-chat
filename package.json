@@ -20,6 +20,7 @@
     "dexie": "4.4.5",
     "lucide-react": "0.541.0",
     "pubky2pubky": "https://github.com/its-gaib/pubky2pubky/archive/ece2165fd554368e59c25dc2ef09b26888c23fda.tar.gz",
+    "qrcode.react": "4.2.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
